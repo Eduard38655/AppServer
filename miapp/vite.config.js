@@ -14,4 +14,7 @@ export default defineConfig({
         
     
     ],base: "/AppServer/",
+    build: {
+    outDir: 'build' // aquí puedes poner 'build' para compatibilidad con gh-pages
+  }
 });
