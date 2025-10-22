@@ -1,0 +1,166 @@
+:root {
+    --Space-font-family: "Space Grotesk", sans-serif; /*para los títulos*/
+    --font-family:
+        "Space Grotesk", sans-serif; /* para el texto general del cuerpo.*/
+    --font-style: normal;
+    --Black-text: hsl(240, 10%, 3.9%);
+    --background: hsl(0, 0%, 96.1%);
+    --TextMode1: hsl(240, 5%, 64.9%);
+    --Button-Hover: hsl(174, 100%, 29%);
+    --borde: hsl(0, 0%, 89.8%);
+    --AsideMenu:hsl(0, 0%, 96.1%);
+}
+.Container_Edit{
+    width: 100%;
+    height: 100%;
+    display: flex;
+   justify-content: flex-end;
+    z-index: 10000000000;
+    background-color: rgba(0, 0, 0, 0.19);
+    position: fixed;
+
+}
+.SubContainer_Edit{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--AsideMenu);
+    padding: 20px;
+    align-items: center;
+    gap: 30px;
+    border-left: 1px solid var(--borde);
+}
+.HeaderContainer_Edit{
+    width: 100%;
+    height: auto;
+    display: flex;
+align-items: center;
+justify-content: space-between;
+flex-direction: row;
+}
+.HeaderContainer_Edit h3{
+    color: var(--Black-text);
+    font-size: 18px;
+    font-weight: 450;
+}
+.HeaderContainer_Edit h3 span{
+    font-size: 15px;
+    color: var( --TextMode1);
+}
+.HeaderContainer_Edit button{
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.FormContainer_Edit{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.FormContainer_Edit div{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.FormContainer_Edit div label{
+    font-size: 14px;
+}
+.FormContainer_Edit div input{
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid var(--borde);
+    background: none;
+    font-size: 15px;
+    font-weight: 400;
+}
+.FormContainer_Edit div input:focus{
+    outline: none;
+    border: 1px solid var(--Button-Hover);
+}
+
+.ButtonContainer_Edit{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.ButtonContainer_Edit button{
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 7px;
+    border: 1px solid var(--borde);
+}
+.ButtonContainer_Edit button:nth-child(1){
+    background: var(--Button-Hover);
+    color: white;
+}
+.ButtonContainer_Edit button:nth-child(2){
+    background: rgb(53, 53, 239);
+    color: white;
+}
+.ButtonContainer_Edit button:nth-child(2):hover{
+    background: rgb(99, 99, 241);
+  
+}
+.ButtonContainer_Edit button:nth-child(2) i{
+    margin-right: 5px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 470px) {
+    
+.Container_Edit{
+    width: 100%;   /* 100% del ancho de la ventana */
+  height: 100%; 
+    display: flex;
+   justify-content: flex-end;
+    z-index: 100000;
+    background-color: rgba(0, 0, 0, 0.19);
+    position: fixed;
+
+}
+
+.SubContainer_Edit{
+    width: 70%;
+    height:auto;
+    display: flex;
+    flex-direction: column;
+    background: var(--AsideMenu);
+    padding: 20px;
+    align-items: center;
+    gap: 30px;
+    border-left: 1px solid var(--borde);
+     z-index: 100000;
+}
+
+.HeaderContainer_Edit{
+    width: auto;
+    height: auto;
+    display: flex;
+align-items: center;
+justify-content: space-between;
+flex-direction: row;
+}
+.HeaderContainer_Edit h3{
+    color: var(--Black-text);
+    font-size: 14px;
+    font-weight: 450;
+}
+.HeaderContainer_Edit h3 span{
+    font-size: 13px;
+    color: var( --TextMode1);
+}
+.HeaderContainer_Edit button{
+    font-size: 17px;
+
+}
+}

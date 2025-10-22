@@ -1,0 +1,250 @@
+:root {
+    --Space-font-family: "Space Grotesk", sans-serif; /*para los títulos*/
+    --font-family:
+        "Space Grotesk", sans-serif; /* para el texto general del cuerpo.*/
+    --font-style: normal;
+    --Black-text: hsl(240, 10%, 3.9%);
+    --background: hsl(0, 0%, 96.1%);
+    --TextMode1: hsl(240, 5%, 64.9%);
+    --Button-Hover: hsl(174, 100%, 29%);
+    --borde: hsl(0, 0%, 89.8%);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+.DivConatinertable{
+    width: 100%;
+    height: auto;
+
+}
+.Table_Contact_Page {
+    width: 100%;
+    height:auto;
+    border-collapse: collapse;
+    background-color: white;
+    position: relative;
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.Table_Contact_Page thead {
+    width: 100%;
+    height: 45px;
+    padding: 20px;
+    border: 1px solid var(--borde);
+    color: var(--Black-text);
+}
+.Table_Contact_Page thead:hover {
+    background: var(--borde);
+}
+.Table_Contact_Page thead th {
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    color: var(--Black-text);
+    font-size: 16px;
+    font-family: var(--Space-font-family);
+}
+.Table_Contact_Page thead th:nth-child(1) button {
+    background: none;
+    border: none;
+    color: var(--Black-text);
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+}
+.Table_Contact_Page thead th:nth-child(1) button i {
+    margin-left: 5px;
+}
+
+.Table_Contact_Page tbody tr {
+    width: 100%;
+    height: 50px;
+    padding: 20px;
+    border: 1px solid var(--borde);
+    text-align: start;
+}
+.Table_Contact_Page tbody tr:hover {
+    background: var(--borde);
+}
+.Table_Contact_Page tbody tr td {
+    padding: 10px;
+    color: var(--Black-text);
+    font-size: 14px;
+    font-family: var(--Space-font-family);
+}
+.Pagination_Info {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-top: 1px solid var(--borde);
+    color: var(--Black-text);
+    font-family: var(--Space-font-family);
+    font-weight: 400;
+}
+.Pagination_Info ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--Black-text);
+    font-family: var(--Space-font-family);
+    font-weight: 400;
+}
+
+.Table_Contact_Page tbody tr td:nth-child(1) span {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--TextMode1);
+}
+.Table_Contact_Page tbody tr td:nth-child(6) button {
+    font-size: 18px;
+    color: var(--Black-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative; 
+}
+.Table_Contact_Page tbody tr td:nth-child(6) ul {
+    width: auto;
+    height: auto;
+    padding: 10px;
+    text-decoration: none;
+    list-style: none;
+    font-size: 14px;
+    position: absolute;
+    background-color: white;
+    margin-left: -130px;
+    border-radius: 7px;
+    z-index: 10000000;
+    border: 1px solid var(--borde);
+    box-shadow:
+        0 4px 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.Table_Contact_Page tbody tr td:nth-child(6) ul li {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.Table_Contact_Page tbody tr td:nth-child(6) ul li:hover {
+    background: var(--Button-Hover);
+}
+.Table_Contact_Page tbody tr td:nth-child(6) ul li button {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--Space-font-family);
+}
+
+.No_Data {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    text-align: center;
+    font-family: var(--Space-font-family);
+    color: var(--TextMode1);
+}
+.No_Data tr {
+    width: 100%;
+    text-align: center;
+}
+.No_Data tr td {
+    padding: 20px;
+    text-align: center;
+}
+
+@media screen and (min-width: 375px) and (max-width: 470px) {
+    .Table_Contact_Page {
+        width: auto;
+        height: auto;
+        overflow: auto;
+    }
+    .DivConatinertable {
+        width: auto;
+        height: auto;
+        overflow: auto;
+    }
+    .Table_Contact_Page thead th {
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    color: var(--Black-text);
+    font-size: 14px;
+    font-family: var(--Space-font-family);
+}
+.Table_Contact_Page thead th:nth-child(1) button {
+    background: none;
+    border: none;
+    color: var(--Black-text);
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+}
+.Table_Contact_Page tbody tr td:nth-child(6) ul{
+    font-size: 14px;
+}
+.Pagination_Info {
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    padding: 10px;
+}
+.Pagination_Info ul{
+    font-size: 14px;
+}
+}
+
+
+
+@media screen and (min-width: 490px) and (max-width: 800px){
+  .Table_Contact_Page {
+        width: auto;
+        height: auto;
+        overflow: auto;
+    }
+    .DivConatinertable {
+        width: auto;
+        height: auto;
+        overflow: auto;
+    }
+    .Table_Contact_Page thead th {
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    color: var(--Black-text);
+    font-size: 14px;
+    font-family: var(--Space-font-family);
+}
+.Table_Contact_Page thead th:nth-child(1) button {
+    background: none;
+    border: none;
+    color: var(--Black-text);
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+}
+.Table_Contact_Page tbody tr td:nth-child(6) ul{
+    font-size: 14px;
+}
+.Pagination_Info {
+    width: auto;
+    height: auto;
+    font-size: 12px;
+    padding: 10px;
+}
+.Pagination_Info ul{
+    font-size: 14px;
+}
+}

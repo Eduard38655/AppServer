@@ -1,0 +1,129 @@
+:root {
+    --Space-font-family: "Space Grotesk", sans-serif; /*para los títulos*/
+    --font-family:
+        "Space Grotesk", sans-serif; /* para el texto general del cuerpo.*/
+    --font-style: normal;
+    --Black-text: hsl(240, 10%, 3.9%);
+    --background: hsl(0, 0%, 96.1%);
+    --TextMode1: hsl(240, 5%, 64.9%);
+    --Button-Hover: hsl(174, 100%, 29%);
+    --borde: hsl(0, 0%, 89.8%);
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+       width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    
+}
+.Container_Login{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.Div_Login_Header{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+gap: 8px;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+.Div_Login_Header i{
+    font-size: 45px;
+    border-radius: 10px;
+    padding: 10px;
+   color: purple;
+
+}
+.Div_Login_Header h3{
+    font-size: 25px;
+    color: var(--Black-text);
+    font-weight: 600;
+}
+.Div_Login_Header h3 span{
+    font-size: 18px;
+    font-weight: 450;
+    color: var(--TextMode1);
+}
+.Main_Info_Container{
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 7px;
+    gap: 20px;
+    box-shadow: rgb(215, 211, 211) 5px 5px 10px 5px;
+
+}
+.Div_Inputs_Info{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+.Div_Inputs_Info div{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.Div_Inputs_Info div input{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--borde);
+}
+.Div_Inputs_Info div input:focus{
+    outline: none;
+    border: 1px solid var(--Button-Hover);
+}
+.Div_CheckBox{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    font-size: 15px;
+    gap: 8px;
+    font-weight: 400;
+}
+.Container_Login button{
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: rgb(13, 13, 251);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.Container_Login button:hover{
+        background-color: rgb(83, 83, 246);
+
+}
+ .Div_Inputs_Info span{
+    color: red;
+    font-size: 13px;
+    font-weight: 400;
+ }

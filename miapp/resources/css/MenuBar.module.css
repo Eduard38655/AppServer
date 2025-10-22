@@ -1,0 +1,603 @@
+:root {
+    --Space-font-family: "Space Grotesk", sans-serif; /*para los títulos*/
+    --font-family:
+        "Space Grotesk", sans-serif; /* para el texto general del cuerpo.*/
+    --font-style: normal;
+    --Black-text: hsl(240, 10%, 3.9%);
+    --background: hsl(0, 0%, 96.1%);
+    --TextMode1: hsl(240, 5%, 64.9%);
+    --Button-Hover: hsl(174, 100%, 29%);
+    --borde: hsl(0, 0%, 89.8%);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+    font-family: var(--font-family);
+    font-style: var(--font-style);
+    color: var(--Black-text);
+}
+
+.Contacto_Page {
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.Contacto_Page_Container {
+    width: 1100px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    padding: 0px 20px 0px 20px;
+}
+.Aside_Menu_Bar {
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: white;
+    align-items: center;
+    border-right: 1px solid var(--borde);
+    position: static;
+}
+.Div_Menu_Container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.DivDetails {
+    width: auto;
+    height: auto;
+    position: fixed;
+}
+.Div_Menu_Profile {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-bottom: 1px solid var(--borde);
+}
+.Nav_Menu_Bar {
+    width: 100%;
+    height: auto;
+}
+.Nav_Menu_Bar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.Nav_Menu_Bar ul li {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px;
+}
+.Nav_Menu_Bar ul li:hover {
+    background: var(--Button-Hover);
+    cursor: pointer;
+    border-radius: 7px;
+}
+.Nav_Menu_Bar ul li i {
+    margin-right: 8px;
+}
+.Link_Menu_Bar {
+    text-align: start;
+    text-decoration: none;
+    color: var(--Black-text);
+}
+.Header_Contact_Page {
+    width: 100%;
+    height: auto;
+    text-align: end;
+    padding: 15px;
+    font-size: 25px;
+    font-weight: 550;
+    font-family: var(--Space-font-family);
+    color: var(--Balck-text);
+}
+.Search_Data_Contact_Page {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.Div_Title_Search_Data {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    border-radius: 5px;
+}
+.Div_Title_Search_Data h3 {
+    font-family: var(--Space-font-family);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--Black-text);
+}
+.Div_Title_Search_Data h3 span {
+    font-family: var(--font-family);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--TextMode1);
+}
+.Div_Input_Search_Data {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    gap: 10px;
+}
+.Div_Input_Search_Data input[type="text"] {
+    width: 350px;
+    height: 45px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--borde);
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 450;
+    color: var(--Black-text);
+}
+.Div_Input_Search_Data input[type="text"]::placeholder {
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.493);
+}
+.Div_Input_Search_Data select {
+    width: 250px;
+    height: 45px;
+    padding: 3px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.526);
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 450;
+    cursor: pointer;
+    color: var(--Black-text);
+}
+.Div_Input_Search_Data input[type="date"] {
+    width: 250px;
+    height: 45px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.526);
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 450;
+    color: var(--Black-text);
+}
+.Div_Input_Search_Data input:focus,
+select:focus {
+    outline: none;
+    border: 1px solid var(--Button-Hover);
+}
+
+.Div_Buttons_Search_Data {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.Div_Buttons_Search_Data button {
+    width: auto;
+    height: 40px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: hsl(240, 100%, 50%);
+    color: white;
+    font-family: var(--font-family);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.Div_Buttons_Search_Data button:nth-child(1) {
+    background: none;
+    border: 1px solid var(--borde);
+    color: var(--Black-text);
+}
+
+.Div_Buttons_Search_Data button:nth-child(1):hover {
+    background-color: var(--Button-Hover);
+    color: white;
+}
+.Div_Buttons_Search_Data button:nth-child(2):hover {
+    background-color: hsl(240, 79%, 61%);
+}
+
+.Aside_Menu_Bar_Mobile {
+    display: none;
+}
+
+@media screen and (min-width: 375px) and (max-width: 470px) {
+    body {
+        width: auto;
+        height: auto;
+    }
+    .Aside_Menu_Bar_Mobile {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        background: white;
+    }
+    .Contacto_Page_Container {
+        width: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        padding: 0px 20px 0px 20px;
+    }
+    .Div_Menu_Container_Mobile {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 25px;
+        border-bottom: 1px solid var(--TextMode1);
+    }
+    .Div_Menu_Container_Mobile button {
+        color: var(--TextMode1);
+        font-size: 15px;
+        border: none;
+        background: none;
+    }
+    .Contacto_Page {
+        display: flex;
+        flex-direction: column;
+    }
+    .Div_Menu_Profile_Mobile {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+    .Aside_Menu_Bar {
+        display: none;
+    }
+    .Div_Input_Search_Data input[type="text"] {
+        width: 100%;
+        height: 45px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        border: 1px solid var(--borde);
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 450;
+        color: var(--Black-text);
+    }
+    .Div_Input_Search_Data input[type="text"]::placeholder {
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.493);
+    }
+    .Div_Input_Search_Data select {
+        width: 100%;
+        height: 45px;
+        padding: 3px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.526);
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 450;
+        cursor: pointer;
+        color: var(--Black-text);
+    }
+    .Div_Input_Search_Data input[type="date"] {
+        width: 100%;
+        height: 45px;
+        padding: 3px 10px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.526);
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 450;
+        color: var(--Black-text);
+    }
+    .Search_Data_Contact_Page {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .Div_Input_Search_Data {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        gap: 5px;
+    }
+    .Div_Title_Search_Data h3 {
+        font-family: var(--Space-font-family);
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--Black-text);
+        text-align: center;
+    }
+    .Div_Title_Search_Data h3 span {
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--TextMode1);
+        text-align: center;
+    }
+    .Div_Buttons_Search_Data {
+        width: auto;
+        height: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+    .Div_Buttons_Search_Data button {
+        width: auto;
+        height: 40px;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: hsl(240, 100%, 50%);
+        color: white;
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .Div_Buttons_Search_Data button i {
+        font-size: 14px;
+    }
+    .Nav_Menu_Bar_Mobile {
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        padding: 20px;
+    }
+    .Nav_Menu_Bar_Mobile ul {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+        list-style: none;
+    }
+
+    .Nav_Menu_Bar_Mobile ul li i {
+        margin-right: 10px;
+        padding: 10px;
+    }
+    .Nav_Menu_Bar_Mobile ul li i:hover {
+        background: var(--TextMode1);
+    }
+    .Header_Contact_Page {
+        text-align: center;
+    }
+}
+
+
+
+@media screen and (min-width: 490px) and (max-width: 800px){
+      body {
+        width: auto;
+        height: auto;
+    }
+    .Aside_Menu_Bar_Mobile {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        background: white;
+    }
+    .Contacto_Page_Container {
+        width: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding: auto;
+    }
+    .Div_Menu_Container_Mobile {
+        width: auto;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 25px;
+        border-bottom: 1px solid var(--TextMode1);
+    }
+    .Div_Menu_Container_Mobile button {
+        color: var(--TextMode1);
+        font-size: 15px;
+        border: none;
+        background: none;
+    }
+    .Contacto_Page {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .Div_Menu_Profile_Mobile {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+    .Aside_Menu_Bar {
+        display: none;
+    }
+    .Div_Input_Search_Data input[type="text"] {
+        width: 100%;
+        height: 45px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        border: 1px solid var(--borde);
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 450;
+        color: var(--Black-text);
+    }
+    .Div_Input_Search_Data input[type="text"]::placeholder {
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.493);
+    }
+    .Div_Input_Search_Data select {
+        width: 100%;
+        height: 45px;
+        padding: 3px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.526);
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 450;
+        cursor: pointer;
+        color: var(--Black-text);
+    }
+    .Div_Input_Search_Data input[type="date"] {
+        width: 100%;
+        height: 45px;
+        padding: 3px 10px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.526);
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 450;
+        color: var(--Black-text);
+    }
+    .Search_Data_Contact_Page {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .Div_Input_Search_Data {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        gap: 5px;
+    }
+    .Div_Title_Search_Data h3 {
+        font-family: var(--Space-font-family);
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--Black-text);
+        text-align: center;
+    }
+    .Div_Title_Search_Data h3 span {
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--TextMode1);
+        text-align: center;
+    }
+    .Div_Buttons_Search_Data {
+        width: auto;
+        height: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-end;
+    }
+    .Div_Buttons_Search_Data button {
+        width: auto;
+        height: 40px;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: hsl(240, 100%, 50%);
+        color: white;
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .Div_Buttons_Search_Data button i {
+        font-size: 14px;
+    }
+    .Nav_Menu_Bar_Mobile {
+        width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        padding: 20px;
+    }
+    .Nav_Menu_Bar_Mobile ul {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+        list-style: none;
+    }
+
+    .Nav_Menu_Bar_Mobile ul li i {
+        margin-right: 10px;
+        padding: 10px;
+    }
+    .Nav_Menu_Bar_Mobile ul li i:hover {
+        background: var(--TextMode1);
+    }
+    .Header_Contact_Page {
+        text-align: center;
+    }
+}
