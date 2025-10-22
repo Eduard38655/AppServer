@@ -9,42 +9,43 @@ function SearchData(params) {
     const [GetProvinces, setGetProvinces] = useState([]);
     const [Cities, setCities] = useState([]);
     const { SearchByName, SetSearchByName } = useContext(ContactosContext);
-    const { SearchByProvince, SetSearchByProvince}=useContext(ContactosContext);
+    const { SearchByProvince, SetSearchByProvince } =
+        useContext(ContactosContext);
     const { SearchByCity, SetSearchByCity } = useContext(ContactosContext);
     const { SearchByDate, SetSearchByDate } = useContext(ContactosContext);
 
     const { isShowAddMenu, setIsShowAddMenu } = useContext(ShowEditMenuContext);
-useEffect(() => {
-  // Si no es un array o está vacío: limpiar y salir sin errores
-  if (!Array.isArray(GetData) || GetData.length === 0) {
-    setGetProvinces([]);
-    setCities([]);
-    return;
-  }
+    useEffect(() => {
+        // Si no es un array o está vacío: limpiar y salir sin errores
+        if (!Array.isArray(GetData) || GetData.length === 0) {
+            setGetProvinces([]);
+            setCities([]);
+            return;
+        }
 
-  const provincesSet = new Set();
-  const citiesSet = new Set();
+        const provincesSet = new Set();
+        const citiesSet = new Set();
 
-  GetData.forEach(item => {
-    // usa optional chaining por si item es null/undefined
-    const prov = item?.provincia;
-    const city = item?.ciudad;
+        GetData.forEach((item) => {
+            // usa optional chaining por si item es null/undefined
+            const prov = item?.provincia;
+            const city = item?.ciudad;
 
-    // Ignorar valores nulos, undefined o strings vacíos
-    if (prov !== undefined && prov !== null) {
-      const p = String(prov).trim();
-      if (p !== '') provincesSet.add(p);
-    }
+            // Ignorar valores nulos, undefined o strings vacíos
+            if (prov !== undefined && prov !== null) {
+                const p = String(prov).trim();
+                if (p !== "") provincesSet.add(p);
+            }
 
-    if (city !== undefined && city !== null) {
-      const c = String(city).trim();
-      if (c !== '') citiesSet.add(c);
-    }
-  });
+            if (city !== undefined && city !== null) {
+                const c = String(city).trim();
+                if (c !== "") citiesSet.add(c);
+            }
+        });
 
-  setGetProvinces(Array.from(provincesSet));
-  setCities(Array.from(citiesSet));
-}, [GetData]);
+        setGetProvinces(Array.from(provincesSet));
+        setCities(Array.from(citiesSet));
+    }, [GetData]);
 
     return (
         <aside className={styles.Search_Data_Contact_Page}>

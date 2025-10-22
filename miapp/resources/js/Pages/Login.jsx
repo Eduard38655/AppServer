@@ -4,49 +4,50 @@ import styles from "../../css/Login.module.css";
 export default function UsersList() {
     const [users, setUsers] = useState("");
     const [password, setPassword] = useState("");
-    const [DataUser, SetDataUser] = useState([]);
-    const [ErrorUser, SetErrorUser] = useState("");
+     const [ErrorUser, SetErrorUser] = useState("");
     const [ErrorPassword, SetErrorPassword] = useState("");
 
-   async function ValidarUser() {
-    localStorage.clear("DataUser");
+    async function ValidarUser() {
+        localStorage.clear("DataUser");
 
-    if (!users || !password) {
-        SetErrorUser(!users ? "Este campo no puede estar vacio" : "");
-        SetErrorPassword(!password ? "Este campo no puede estar vacio" : "");
-        return;
-    }
-
-    try {
-        const token = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
-        const res = await fetch("/login", {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": token,
-                Accept: "application/json",
-            },
-            body: JSON.stringify({ email: users, password }),
-        });
-
-        const data = await res.json();
-console.log(data);
-
-        if (data.status==="success") {
-            localStorage.setItem("DataUser", JSON.stringify(data));
-            window.location.href = "/contacto";
-        } else {
-            SetErrorUser(data.message);
-            SetErrorPassword(data.message);
+        if (!users || !password) {
+            SetErrorUser(!users ? "Este campo no puede estar vacio" : "");
+            SetErrorPassword(
+                !password ? "Este campo no puede estar vacio" : "",
+            );
+            return;
         }
 
-    } catch (err) {
-        console.error(err);
-        SetErrorUser("No se pudo conectar con el servidor");
-    }
-}
+        try {
+            const token = document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute("content");
+            const res = await fetch("/login", {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": token,
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({ email: users, password }),
+            });
 
+            const data = await res.json();
+            console.log(data);
+
+            if (data.status === "success") {
+                localStorage.setItem("DataUser", JSON.stringify(data));
+                window.location.href = "/contacto";
+            } else {
+                SetErrorUser(data.message);
+                SetErrorPassword(data.message);
+            }
+        } catch (err) {
+            console.error(err);
+            SetErrorUser("No se pudo conectar con el servidor");
+        }
+    }
 
     return (
         <article className={styles.Container_Login}>
@@ -85,9 +86,7 @@ console.log(data);
 
                 <div className={styles.Div_CheckBox}>
                     <input type="checkbox" />
-                    <p>
-                        Remember me  
-                    </p>
+                    <p>Remember me</p>
                 </div>
 
                 <button onClick={ValidarUser}>Sign in</button>

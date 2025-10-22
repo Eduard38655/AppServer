@@ -6,12 +6,11 @@ use App\Models\Contacto;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
+
 class ContactosController extends Controller
 {
-    // Obtener todos los contactos en JSON
     public function index()
     {
-        // Selecciona todos los campos de la tabla contactos
         $contactos = Contacto::all();
 
         // Retorna los datos como JSON
@@ -20,76 +19,74 @@ class ContactosController extends Controller
 
 
 
-   
-public function getContactos(Request $request)
-{
-    $userId = Auth::id(); // siempre el ID del usuario que está logueado
-    if (! $userId) {
+
+    public function getContactos(Request $request)
+    {
+        $userId = Auth::id();
+        if (! $userId) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'No autenticado'
+            ], 401);
+        }
+
+        $contactos = Contacto::where('userid', $userId)
+            ->get(['id', 'nombre', 'email', 'telefono', 'provincia', 'ciudad', 'status', 'dia', 'mes', 'ano']); // selecciona solo columnas necesarias
+
         return response()->json([
-            'status' => 'error',
-            'message' => 'No autenticado'
-        ], 401);
+            'status' => 'success',
+            'data' => $contactos
+        ], 200);
     }
 
-    $contactos = Contacto::where('userid', $userId)
-        ->get(['id','nombre','email','telefono','provincia','ciudad','status','dia','mes','ano']); // selecciona solo columnas necesarias
-
-    return response()->json([
-        'status' => 'success',
-        'data' => $contactos
-    ], 200);
-}
-
-    public function Deletecontactos(Request $request){
+    public function Deletecontactos(Request $request)
+    {
         $userId = $request->input('id');
 
-        // Obtener contactos filtrados por user_id
         $contactos = Contacto::where('id', $userId)->delete();
 
         return response()->json($contactos);
     }
-/*ContactoID,NewNombre,NewEmail,NewPhone,NewProvincia,NewCiudad */
-  public function Updatecontactos(Request $request)
-{
-    // Validar datos
-    $validated = $request->validate([
-        'id'   => 'required|integer| ',
-        'NewNombre'    => 'sometimes|required|string|max:255',
-        'NewEmail'     => 'sometimes|nullable|email|max:255',
-        'NewPhone'     => 'sometimes|nullable|string|max:9',
-        'NewProvincia' => 'sometimes|nullable|string|max:100',
-        'NewCiudad'    => 'sometimes|nullable|string|max:100',
-    ]);
+    /*ContactoID,NewNombre,NewEmail,NewPhone,NewProvincia,NewCiudad */
+    public function Updatecontactos(Request $request)
+    {
+        // Validar datos
+        $validated = $request->validate([
+            'id'   => 'required|integer| ',
+            'NewNombre'    => 'sometimes|required|string|max:255',
+            'NewEmail'     => 'sometimes|nullable|email|max:255',
+            'NewPhone'     => 'sometimes|nullable|string|max:9',
+            'NewProvincia' => 'sometimes|nullable|string|max:100',
+            'NewCiudad'    => 'sometimes|nullable|string|max:100',
+        ]);
 
-    // Buscar contacto
-    $contacto = Contacto::find($validated['id']);
+        // Buscar contacto
+        $contacto = Contacto::find($validated['id']);
 
-    if (!$contacto) {
-        return response()->json(['error' => 'Contacto no encontrado'], 404);
+        if (!$contacto) {
+            return response()->json(['error' => 'Contacto no encontrado'], 404);
+        }
+
+        $dataToUpdate = [];
+        if (isset($validated['NewNombre']))    $dataToUpdate['nombre']    = $validated['NewNombre'];
+        if (isset($validated['NewEmail']))     $dataToUpdate['email']     = $validated['NewEmail'];
+        if (isset($validated['NewPhone']))     $dataToUpdate['telefono']  = $validated['NewPhone'];
+        if (isset($validated['NewProvincia'])) $dataToUpdate['provincia'] = $validated['NewProvincia'];
+        if (isset($validated['NewCiudad']))    $dataToUpdate['ciudad']    = $validated['NewCiudad'];
+
+        // Actualizar
+        $contacto->update($dataToUpdate);
+
+        // Devolver contacto 
+        return response()->json([
+            'message' => 'Contacto actualizado correctamente',
+            'contact' => $contacto
+        ], 200);
     }
 
-    // Preparar array con solo los campos presentes en request
-    $dataToUpdate = [];
-    if (isset($validated['NewNombre']))    $dataToUpdate['nombre']    = $validated['NewNombre'];
-    if (isset($validated['NewEmail']))     $dataToUpdate['email']     = $validated['NewEmail'];
-    if (isset($validated['NewPhone']))     $dataToUpdate['telefono']  = $validated['NewPhone'];
-    if (isset($validated['NewProvincia'])) $dataToUpdate['provincia'] = $validated['NewProvincia'];
-    if (isset($validated['NewCiudad']))    $dataToUpdate['ciudad']    = $validated['NewCiudad'];
 
-    // Actualizar
-    $contacto->update($dataToUpdate);
-
-    // Devolver contacto actualizado
-    return response()->json([
-        'message' => 'Contacto actualizado correctamente',
-        'contact' => $contacto
-    ], 200);
-}
- 
-
-public function Agregarcontactos(Request $request)
+    public function Agregarcontactos(Request $request)
     {
-        // Validación (dia/mes/ano opcionales pero si se envía uno, se requieren los otros)
         $validated = $request->validate([
             'NewNombre'    => 'required|string|max:255',
             'NewEmail'     => 'required|email|max:255|unique:contactos,email',
@@ -103,7 +100,7 @@ public function Agregarcontactos(Request $request)
 
         try {
             $contacto = Contacto::create([
-                'userid'    => Auth::id() ?? 1, // usa Auth si hay sesión, sino 1
+                'userid'    => Auth::id() ?? 1,
                 'nombre'    => $validated['NewNombre'],
                 'email'     => $validated['NewEmail'],
                 'telefono'  => $validated['NewPhone'],
@@ -119,19 +116,11 @@ public function Agregarcontactos(Request $request)
                 'message' => 'Contacto creado correctamente',
                 'contact' => $contacto
             ], 201);
-
         } catch (QueryException $e) {
-            // Por ejemplo: unique constraint race condition u otro error de BD
             return response()->json([
                 'message' => 'Error al guardar el contacto.',
                 'error'   => $e->getMessage()
             ], 500);
         }
     }
-   
-      
-     };
-
-
-
- 
+};

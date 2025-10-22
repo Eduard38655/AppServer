@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ContactosContext } from "../../Context/ContactosContext";
 
 function ContactosCSV() {
-    const { GetData } = useContext(ContactosContext); // <-- tu lista de contactos
+    const { GetData } = useContext(ContactosContext); 
 
     function exportarCSV() {
         if (!GetData || GetData.length === 0) {
@@ -10,7 +10,7 @@ function ContactosCSV() {
             return;
         }
 
-        // 1️⃣ Definir las columnas que quieres mostrar
+       
         const encabezados = [
             "Nombre",
             "Email",
@@ -22,7 +22,7 @@ function ContactosCSV() {
             "Año",
         ];
 
-        // 2️⃣ Crear las filas según tus campos
+      
         const filas = GetData.map((contacto) => [
             contacto.nombre || "",
             contacto.email || "",
@@ -34,13 +34,13 @@ function ContactosCSV() {
             contacto.ano || "",
         ]);
 
-        // 3️⃣ Unir encabezados y filas
+       
         const csvContent =
             encabezados.join(",") +
             "\n" +
             filas.map((fila) => fila.join(",")).join("\n");
 
-        // 4️⃣ Crear blob y descargar archivo
+        // descargar archivo
         const blob = new Blob([csvContent], {
             type: "text/csv;charset=utf-8;",
         });

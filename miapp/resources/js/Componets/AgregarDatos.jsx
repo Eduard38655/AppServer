@@ -17,7 +17,7 @@ function AgregarDatos() {
     const [isSaving, setIsSaving] = useState(false);
 
     async function AgregarInfo() {
-        if (isSaving) return; // evitar envíos concurrentes
+        if (isSaving) return;
         setIsSaving(true);
 
         try {
@@ -46,18 +46,17 @@ function AgregarDatos() {
                 credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": token ,
+                    "X-CSRF-TOKEN": token,
                     Accept: "application/json",
                 },
                 body: JSON.stringify(payload),
             });
 
             const data = await response.json();
-            alert(data.message)
+            alert(data.message);
             if (response.ok) {
-                // Actualizar la lista local (prepend)
                 setContactoData((prev) => [data.contact, ...prev]);
- 
+
                 setName("");
                 setEmail("");
                 setPhone("");
@@ -68,14 +67,10 @@ function AgregarDatos() {
                 SetDataBase(true);
 
                 setIsSaving(false);
-                
-                
+
                 return data;
             } else {
-                
-
                 setIsSaving(false);
-              
             }
         } catch (err) {
             console.error("Error", err);

@@ -10,45 +10,43 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersDataController extends Controller
 {
-    // Obtener todos los usuarios en JSON (sin password)
+    // Obtener todos los usuarios en JSON 
     public function json()
     {
         $users = UsersData::select('id', 'name', 'email')->get();
         return response()->json(['status' => 'success', 'data' => $users], 200);
     }
 
-    // Validar usuario y crear sesión (POST /login)
+    // Validar usuario 
     public function validateUser(Request $request)
-{
-    // Validar campos
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required|string|min:6',
-    ]);
+    {
+        // Validar campos
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string|min:6',
+        ]);
 
-    // Intentar login con Laravel
-    if (!Auth::attempt($request->only('email', 'password'))) {
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Credenciales incorrectas'
+            ], 401);
+        }
+
+        // Login exitoso
+        $request->session()->regenerate();
+        $user = Auth::user();
+
         return response()->json([
-            'status' => 'error',
-            'message' => 'Credenciales incorrectas'
-        ], 401);
+            'status' => 'success',
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+            ]
+        ]);
     }
 
-    // Login exitoso
-    $request->session()->regenerate();
-    $user = Auth::user();
-
-    return response()->json([
-        'status' => 'success',
-        'user' => [
-            'id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
-        ]
-    ]);
-}
-
-    // Generar token (usa Sanctum o similar) - opcional
     public function getToken()
     {
         $user = UsersData::first();

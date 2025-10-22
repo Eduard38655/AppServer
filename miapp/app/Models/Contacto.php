@@ -6,13 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contacto extends Model
 {
-    // Nombre explícito de la tabla
     protected $table = 'contactos';
 
-    // Timestamps activados (created_at, updated_at)
     public $timestamps = false;
 
-    // Campos que se pueden asignar en masa
     protected $fillable = [
         'userid',
         'nombre',
@@ -26,7 +23,6 @@ class Contacto extends Model
         'status',
     ];
 
-    // Relación opcional con la tabla usersData
     public function user()
     {
         return $this->belongsTo(UsersData::class, 'userid');

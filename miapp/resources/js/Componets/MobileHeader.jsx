@@ -42,15 +42,8 @@ function MobileHeader(params) {
                         <nav className={styles.Nav_Menu_Bar_Mobile}>
                             <ul>
                                 <li>
-                                    
-                                </li>
-                                <li>
-                                 
-                                       
-                                    
-                                        <i className="fa-solid fa-address-book"></i>
-                                        Contacto
-                                   
+                                    <i className="fa-solid fa-address-book"></i>
+                                    Contacto
                                 </li>
                             </ul>
                         </nav>
